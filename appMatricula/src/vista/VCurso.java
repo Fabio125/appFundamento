@@ -489,7 +489,14 @@ public class VCurso extends javax.swing.JFrame {
                 
                 if(jTable2.getRowCount()>0){
                     
-                    jTextField1.setText(jTable2.getValueAt(jTable2.rowAtPoint(evt.getPoint()), 0).toString());
+                    if(jTable2.rowAtPoint(evt.getPoint())!=-1){
+                        
+                        jTextField1.setText(jTable2.getValueAt(jTable2.rowAtPoint(evt.getPoint()), 0).toString());
+                        jTextField2.setText(jTable2.getValueAt(jTable2.rowAtPoint(evt.getPoint()), 1).toString());
+                        jSpinner1.setValue(Integer.parseInt(jTable2.getValueAt(jTable2.rowAtPoint(evt.getPoint()), 2).toString()));
+                        jSpinner2.setValue(Integer.parseInt(jTable2.getValueAt(jTable2.rowAtPoint(evt.getPoint()), 3).toString()));
+                        jTextField3.setText(jTable2.getValueAt(jTable2.rowAtPoint(evt.getPoint()), 4).toString());
+                    }
                     
                 }
               
