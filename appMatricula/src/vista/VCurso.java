@@ -6,6 +6,7 @@
 package vista;
 
 import java.awt.HeadlessException;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import utilidad.UCurso;
@@ -27,7 +28,8 @@ public class VCurso extends javax.swing.JFrame {
     private String prerequisito=null;
     private UCurso ucurso=new UCurso();
     private DefaultTableModel table;
-    private String col[] = {"Cod","Nombre","N° Credito", "Ciclo", "Pre-Requisito"};
+    private String col[] = {"N°","IdCurso","Nombre","N° Credito", "Ciclo", "Pre-Requisito"};
+    private int index=-1;
     
     public VCurso() {
         initComponents();
@@ -44,6 +46,9 @@ public class VCurso extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -59,6 +64,8 @@ public class VCurso extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jCheckBox1 = new javax.swing.JCheckBox();
         jPanel3 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -79,6 +86,24 @@ public class VCurso extends javax.swing.JFrame {
             }
         ));
         jScrollPane1.setViewportView(jTable1);
+
+        jMenuItem1.setText("Ordenar por Nombre");
+        jMenuItem1.setName("jmxnombre"); // NOI18N
+        jMenuItem1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuItem1MouseClicked(evt);
+            }
+        });
+        jPopupMenu1.add(jMenuItem1);
+
+        jMenuItem2.setText("Ordenar por Ciclo");
+        jMenuItem2.setName("jmiciclo"); // NOI18N
+        jMenuItem2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuItem2MouseClicked(evt);
+            }
+        });
+        jPopupMenu1.add(jMenuItem2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -102,12 +127,15 @@ public class VCurso extends javax.swing.JFrame {
 
         jTextField2.setName("txt_name"); // NOI18N
         jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField2KeyPressed(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextField2KeyTyped(evt);
             }
         });
 
-        jLabel4.setText("N° Credito :");
+        jLabel4.setText("N° Credito:");
         jLabel4.setToolTipText("");
 
         jSpinner1.setName("sp_ncredito"); // NOI18N
@@ -116,6 +144,11 @@ public class VCurso extends javax.swing.JFrame {
         jLabel5.setToolTipText("");
 
         jSpinner2.setName("sp_nciclo"); // NOI18N
+        jSpinner2.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jSpinner2StateChanged(evt);
+            }
+        });
 
         jLabel6.setText("Pre-Requisito :");
         jLabel6.setToolTipText("");
@@ -127,6 +160,7 @@ public class VCurso extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Frequena Chuyes\\Dropbox\\PROGRAMAS\\img\\guardar.png")); // NOI18N
         jButton1.setText("Guardar");
         jButton1.setName("btn_guardar"); // NOI18N
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -140,6 +174,7 @@ public class VCurso extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Frequena Chuyes\\Dropbox\\PROGRAMAS\\img\\cancelar.png")); // NOI18N
         jButton2.setText("Cancelar");
         jButton2.setName("btn_cancelar"); // NOI18N
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -147,6 +182,17 @@ public class VCurso extends javax.swing.JFrame {
                 jButton2MouseClicked(evt);
             }
         });
+
+        jButton5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Frequena Chuyes\\Dropbox\\PROGRAMAS\\img\\quitar.png")); // NOI18N
+        jButton5.setText("Eliminar");
+        jButton5.setName("btn_eliminar"); // NOI18N
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
+            }
+        });
+
+        jCheckBox1.setText("Buscar");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -157,40 +203,44 @@ public class VCurso extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 6, Short.MAX_VALUE)
+                        .addGap(347, 347, 347))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton2)
-                                .addGap(22, 22, 22))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabel4)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jLabel5)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField3))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(jPanel2Layout.createSequentialGroup()
-                                            .addComponent(jLabel2)
-                                            .addGap(29, 29, 29))
-                                        .addGroup(jPanel2Layout.createSequentialGroup()
-                                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addGap(29, 29, 29))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextField2)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                .addContainerGap())
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jCheckBox1)
+                                        .addGap(13, 13, 13))))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(12, 12, 12)
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,7 +250,8 @@ public class VCurso extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCheckBox1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -213,12 +264,16 @@ public class VCurso extends javax.swing.JFrame {
                     .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(13, 13, 13)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
+
+        jCheckBox1.getAccessibleContext().setAccessibleName("ch_buscar");
+        jCheckBox1.getAccessibleContext().setAccessibleDescription("");
 
         jPanel1.add(jPanel2);
 
@@ -238,6 +293,7 @@ public class VCurso extends javax.swing.JFrame {
 
             }
         ));
+        jTable2.setComponentPopupMenu(jPopupMenu1);
         jTable2.setEnabled(false);
         jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -246,6 +302,7 @@ public class VCurso extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jTable2);
 
+        jButton3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Frequena Chuyes\\Dropbox\\PROGRAMAS\\img\\descargar.png")); // NOI18N
         jButton3.setText("Cargar");
         jButton3.setName("btn_cargar"); // NOI18N
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -259,6 +316,7 @@ public class VCurso extends javax.swing.JFrame {
             }
         });
 
+        jButton4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Frequena Chuyes\\Dropbox\\PROGRAMAS\\img\\limpiar.png")); // NOI18N
         jButton4.setText("Limpiar");
         jButton4.setName("btn_limpiar"); // NOI18N
         jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -284,33 +342,32 @@ public class VCurso extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(23, 23, 23))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                        .addContainerGap())))
+                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel7))
+                        .addGap(15, 15, 15)
+                        .addComponent(jButton3)))
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton3)
-                        .addComponent(jButton4))
-                    .addComponent(jLabel8))
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel8)
+                        .addGap(24, 24, 24)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -384,7 +441,7 @@ public class VCurso extends javax.swing.JFrame {
                                
                            }else{
                            
-                              // JOptionPane.showMessageDialog(null,"Código de curso ya registrado...", "Advertencia", JOptionPane.INFORMATION_MESSAGE);                 
+                              actualizaCurso();
                            }
                        }                    
                    
@@ -456,12 +513,13 @@ public class VCurso extends javax.swing.JFrame {
             jSpinner2.setValue(0);
             jTextField3.setText(""); 
             jLabel8.setText("NT=0");
+            index=-1;
             if(table!=null){
                 
                 table.getDataVector().removeAllElements();
                 table.fireTableDataChanged();
             }          
-            
+            jCheckBox1.setSelected(false);
             
         }catch (Exception ex) {
             
@@ -491,11 +549,12 @@ public class VCurso extends javax.swing.JFrame {
                     
                     if(jTable2.rowAtPoint(evt.getPoint())!=-1){
                         
-                        jTextField1.setText(jTable2.getValueAt(jTable2.rowAtPoint(evt.getPoint()), 0).toString());
-                        jTextField2.setText(jTable2.getValueAt(jTable2.rowAtPoint(evt.getPoint()), 1).toString());
-                        jSpinner1.setValue(Integer.parseInt(jTable2.getValueAt(jTable2.rowAtPoint(evt.getPoint()), 2).toString()));
-                        jSpinner2.setValue(Integer.parseInt(jTable2.getValueAt(jTable2.rowAtPoint(evt.getPoint()), 3).toString()));
-                        jTextField3.setText(jTable2.getValueAt(jTable2.rowAtPoint(evt.getPoint()), 4).toString());
+                        index=Integer.parseInt(jTable2.getValueAt(jTable2.rowAtPoint(evt.getPoint()), 0).toString())-1;
+                        jTextField1.setText(jTable2.getValueAt(jTable2.rowAtPoint(evt.getPoint()), 1).toString());
+                        jTextField2.setText(jTable2.getValueAt(jTable2.rowAtPoint(evt.getPoint()), 2).toString());
+                        jSpinner1.setValue(Integer.parseInt(jTable2.getValueAt(jTable2.rowAtPoint(evt.getPoint()), 3).toString()));
+                        jSpinner2.setValue(Integer.parseInt(jTable2.getValueAt(jTable2.rowAtPoint(evt.getPoint()), 4).toString()));
+                        jTextField3.setText(jTable2.getValueAt(jTable2.rowAtPoint(evt.getPoint()), 5).toString());
                     }
                     
                 }
@@ -508,6 +567,88 @@ public class VCurso extends javax.swing.JFrame {
         }   
     }//GEN-LAST:event_jTable2MouseClicked
 
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+        // TODO add your handling code here:
+        try{
+            
+            eliminaCurso();
+            
+        }catch(Exception ex){
+        
+            JOptionPane.showMessageDialog(null,ex.getMessage(), "Error", JOptionPane.INFORMATION_MESSAGE);  
+        }
+    }//GEN-LAST:event_jButton5MouseClicked
+
+    private void jTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyPressed
+        
+        try{
+        
+            if(jCheckBox1.isSelected()){
+                
+                if(evt.getKeyCode() == KeyEvent.VK_ENTER) {
+
+                     if(jTextField2.getText().length()>0){
+
+                         listarCursoxNombre();
+                     }
+                }
+            }
+            
+        }catch(Exception ex){
+        
+            JOptionPane.showMessageDialog(null,ex.getMessage(), "Error", JOptionPane.INFORMATION_MESSAGE);  
+        }
+    }//GEN-LAST:event_jTextField2KeyPressed
+
+    private void jSpinner2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner2StateChanged
+        
+        
+        try{
+        
+            if(jCheckBox1.isSelected()) {               
+                 
+                 
+                 if(jSpinner2.getValue()!=null){
+                 
+                      //JOptionPane.showMessageDialog(null,"ffff", "Error", JOptionPane.INFORMATION_MESSAGE); 
+                     listarCursoxCiclo();
+                 }
+            }
+            
+        }catch(Exception ex){
+        
+            JOptionPane.showMessageDialog(null,ex.getMessage(), "Error", JOptionPane.INFORMATION_MESSAGE);  
+        }     
+    }//GEN-LAST:event_jSpinner2StateChanged
+
+    private void jMenuItem1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MouseClicked
+            // TODO add your handling code here:
+
+        try{
+        
+               ordenarCursoxNombre();
+            
+        }catch(Exception ex){
+        
+            JOptionPane.showMessageDialog(null,ex.getMessage(), "Error", JOptionPane.INFORMATION_MESSAGE);  
+        }                
+           
+    }//GEN-LAST:event_jMenuItem1MouseClicked
+
+    private void jMenuItem2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem2MouseClicked
+        // TODO add your handling code here:
+        
+        try{
+        
+               ordenarCursoxCiclo();
+            
+        }catch(Exception ex){
+        
+            JOptionPane.showMessageDialog(null,ex.getMessage(), "Error", JOptionPane.INFORMATION_MESSAGE);  
+        } 
+    }//GEN-LAST:event_jMenuItem2MouseClicked
+
+    
     /**********************************Mis Metodos************************************/
     
     public void guardarCurso(){
@@ -532,6 +673,107 @@ public class VCurso extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,ex.getMessage(), "Error", JOptionPane.INFORMATION_MESSAGE);  
         }
     }  
+    public void actualizaCurso(){
+    
+        try{
+        
+            if(index!=-1){
+            
+                if(JOptionPane.showConfirmDialog(null, "¿Desea actualizar curso?")==0){
+                                   
+                    idcurso=jTextField1.getText();
+                    nombre=jTextField2.getText().toUpperCase();
+                    ncredito=(int)jSpinner1.getValue();
+                    ciclo=(int)jSpinner2.getValue();
+                    prerequisito=jTextField3.getText();
+                    ucurso.modificaCurso(index,idcurso, nombre, ncredito, ciclo, prerequisito);
+
+                    JOptionPane.showMessageDialog(null,"Actualizado correctamente...", "Información", JOptionPane.INFORMATION_MESSAGE);  
+                    listarCurso();
+
+                }
+            }
+            
+        }catch(Exception ex){
+        
+            JOptionPane.showMessageDialog(null,ex.getMessage(), "Error", JOptionPane.INFORMATION_MESSAGE);  
+        }
+    
+    }
+    
+    public void eliminaCurso(){
+    
+        try{
+        
+            if(index!=-1){
+        
+                if(JOptionPane.showConfirmDialog(null, "¿Desea elimnar curso?")==0){
+                                   
+                    
+                    ucurso.elimnarCurso(index);
+                    JOptionPane.showMessageDialog(null,"Eliminado correctamente...", "Información", JOptionPane.INFORMATION_MESSAGE);  
+                    listarCurso();
+
+                }                 
+                
+            }
+        }catch(Exception ex){
+        
+            JOptionPane.showMessageDialog(null,ex.getMessage(), "Error", JOptionPane.INFORMATION_MESSAGE);  
+        }
+    }
+    
+    public void listarCursoxNombre(){
+    
+        Object[] arreglo;        
+        try{
+            
+            arreglo=ucurso.reportarCursoxNombre(jTextField2.getText());
+            
+            if(arreglo!=null){
+            
+                table=new DefaultTableModel(col,0);               
+                jTable2.setModel(table);                
+            
+                for (Object arr : arreglo) {
+                    
+                    table.addRow((Object[]) arr);
+                }              
+                jLabel8.setText("NT="+arreglo.length);
+            }
+            
+        }catch(Exception ex){
+            
+            JOptionPane.showMessageDialog(null,ex.getMessage(), "Error", JOptionPane.INFORMATION_MESSAGE);  
+        }
+        
+    }
+    
+    public void listarCursoxCiclo(){
+    
+        Object[] arreglo;        
+        try{
+            
+            arreglo=ucurso.reportarCursoxCiclo((int)jSpinner2.getValue());
+            
+            if(arreglo!=null){
+            
+                table=new DefaultTableModel(col,0);               
+                jTable2.setModel(table);                
+            
+                for (Object arr : arreglo) {
+                    
+                    table.addRow((Object[]) arr);
+                }              
+                jLabel8.setText("NT="+arreglo.length);
+            }
+            
+        }catch(Exception ex){
+            
+            JOptionPane.showMessageDialog(null,ex.getMessage(), "Error", JOptionPane.INFORMATION_MESSAGE);  
+        }
+        
+    }
     
     public void listarCurso(){
         
@@ -542,14 +784,13 @@ public class VCurso extends javax.swing.JFrame {
             
             if(arreglo!=null){
             
-                table=new DefaultTableModel(col,0);
-                jTable2.setModel(table);
-                
+                table=new DefaultTableModel(col,0);               
+                jTable2.setModel(table);                
+            
                 for (Object arr : arreglo) {
                     
                     table.addRow((Object[]) arr);
-                }
-                
+                }              
                 jLabel8.setText("NT="+arreglo.length);
             }
             
@@ -559,6 +800,31 @@ public class VCurso extends javax.swing.JFrame {
         }
     }
     
+    public void ordenarCursoxNombre(){
+    
+        try{
+            
+           ucurso.ordenarCursoxNombre();
+           listarCurso();
+            
+        }catch(Exception ex){
+            
+            JOptionPane.showMessageDialog(null,ex.getMessage(), "Error", JOptionPane.INFORMATION_MESSAGE);  
+        }
+    }
+    
+    public void ordenarCursoxCiclo(){
+    
+        try{
+            
+           ucurso.ordenarCursoxCiclo();
+           listarCurso();
+           
+        }catch(Exception ex){
+            
+            JOptionPane.showMessageDialog(null,ex.getMessage(), "Error", JOptionPane.INFORMATION_MESSAGE);  
+        }
+    }
     
     public static boolean isNumeric(String strNum) {
         try {
@@ -611,6 +877,8 @@ public class VCurso extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -619,9 +887,12 @@ public class VCurso extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSpinner jSpinner1;
