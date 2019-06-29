@@ -116,14 +116,13 @@ public class UCurso {
              {
                  if(i!=index){
                      
-                     arreglo_aux[j]=arreglo[i];
-                     ((Object[])arreglo_aux[j])[0]=j+1;
+                     arreglo_aux[j]=arreglo[i];                     
                      j++;
                  }             
              }
              
              arreglo=arreglo_aux;
-             
+             darPosicion();
          }
     }
     
@@ -212,11 +211,12 @@ public class UCurso {
     
     public void ordenarCursoxNombre(){
     
-         Object[] arreglo_aux;
+         Object[] arreglo_aux;      
          
           if(arregloCreado()){
           
               for(int i=1; i<=arreglo.length; i++) {  
+                  
                 for(int j=0; j<arreglo.length-i; j++) { 
                     
                     if(((String)((Object[])arreglo[j])[2]).
@@ -226,7 +226,9 @@ public class UCurso {
                         arreglo[j+1]= arreglo_aux; 
                     }    
                 } 
-            }              
+            }    
+              darPosicion();
+             
          }
     }
     
@@ -234,21 +236,36 @@ public class UCurso {
     public void ordenarCursoxCiclo(){
     
          Object[] arreglo_aux;
-         
+    
           if(arregloCreado()){
           
               for(int i=1; i<=arreglo.length; i++) {  
                   
                 for(int j=0; j<arreglo.length-i; j++) { 
                     
-                    if(((int)((Object[])arreglo[j])[4])>=
+                    if(((int)((Object[])arreglo[j])[4])<=
                              (int)((Object[])arreglo[j+1])[4]) { 
                         arreglo_aux   = (Object[])arreglo[j]; 
                         arreglo[j] =(Object[])arreglo[j+1]; 
                         arreglo[j+1]= arreglo_aux; 
                     }    
                 } 
-            }              
+            }   
+           darPosicion();
+         }
+    }
+    
+    public void darPosicion(){
+    
+         int k=1;
+         
+         if(arregloCreado()){
+          
+              for(int i=0; i<arreglo.length; i++) { 
+              
+                  ((Object[])arreglo[i])[0]=k;
+                  k++;
+              }         
          }
     }
 }

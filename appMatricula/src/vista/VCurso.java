@@ -88,19 +88,21 @@ public class VCurso extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         jMenuItem1.setText("Ordenar por Nombre");
+        jMenuItem1.setComponentPopupMenu(jPopupMenu1);
         jMenuItem1.setName("jmxnombre"); // NOI18N
-        jMenuItem1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenuItem1MouseClicked(evt);
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
             }
         });
         jPopupMenu1.add(jMenuItem1);
 
         jMenuItem2.setText("Ordenar por Ciclo");
+        jMenuItem2.setComponentPopupMenu(jPopupMenu1);
         jMenuItem2.setName("jmiciclo"); // NOI18N
-        jMenuItem2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenuItem2MouseClicked(evt);
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
             }
         });
         jPopupMenu1.add(jMenuItem2);
@@ -215,24 +217,24 @@ public class VCurso extends javax.swing.JFrame {
                                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField2)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jCheckBox1)
-                                        .addGap(13, 13, 13))))
+                                        .addGap(13, 13, 13))
+                                    .addComponent(jTextField2)))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(12, 12, 12)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE))
+                                .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -331,7 +333,7 @@ public class VCurso extends javax.swing.JFrame {
         });
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel8.setText("NT=0");
+        jLabel8.setText("N°=0");
         jLabel8.setToolTipText("");
         jLabel8.setName("lb_nt"); // NOI18N
 
@@ -370,6 +372,8 @@ public class VCurso extends javax.swing.JFrame {
                         .addGap(24, 24, 24)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jLabel8.getAccessibleContext().setAccessibleName("N°=");
 
         jPanel1.add(jPanel3);
 
@@ -621,32 +625,29 @@ public class VCurso extends javax.swing.JFrame {
         }     
     }//GEN-LAST:event_jSpinner2StateChanged
 
-    private void jMenuItem1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MouseClicked
-            // TODO add your handling code here:
-
-        try{
-        
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+                // TODO add your handling code here:
+         try{                
+               
                ordenarCursoxNombre();
             
         }catch(Exception ex){
         
             JOptionPane.showMessageDialog(null,ex.getMessage(), "Error", JOptionPane.INFORMATION_MESSAGE);  
-        }                
-           
-    }//GEN-LAST:event_jMenuItem1MouseClicked
+        }   
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    private void jMenuItem2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem2MouseClicked
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
-        
-        try{
-        
+         try{        
+          
                ordenarCursoxCiclo();
             
         }catch(Exception ex){
         
             JOptionPane.showMessageDialog(null,ex.getMessage(), "Error", JOptionPane.INFORMATION_MESSAGE);  
         } 
-    }//GEN-LAST:event_jMenuItem2MouseClicked
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     
     /**********************************Mis Metodos************************************/
@@ -739,7 +740,7 @@ public class VCurso extends javax.swing.JFrame {
                     
                     table.addRow((Object[]) arr);
                 }              
-                jLabel8.setText("NT="+arreglo.length);
+                jLabel8.setText("N°="+arreglo.length);
             }
             
         }catch(Exception ex){
@@ -765,7 +766,7 @@ public class VCurso extends javax.swing.JFrame {
                     
                     table.addRow((Object[]) arr);
                 }              
-                jLabel8.setText("NT="+arreglo.length);
+                jLabel8.setText("N°="+arreglo.length);
             }
             
         }catch(Exception ex){
@@ -791,7 +792,7 @@ public class VCurso extends javax.swing.JFrame {
                     
                     table.addRow((Object[]) arr);
                 }              
-                jLabel8.setText("NT="+arreglo.length);
+                jLabel8.setText("N°="+arreglo.length);
             }
             
         }catch(Exception ex){
@@ -802,8 +803,8 @@ public class VCurso extends javax.swing.JFrame {
     
     public void ordenarCursoxNombre(){
     
-        try{
-            
+        try{           
+             
            ucurso.ordenarCursoxNombre();
            listarCurso();
             
@@ -815,8 +816,8 @@ public class VCurso extends javax.swing.JFrame {
     
     public void ordenarCursoxCiclo(){
     
-        try{
-            
+        try{           
+           
            ucurso.ordenarCursoxCiclo();
            listarCurso();
            
