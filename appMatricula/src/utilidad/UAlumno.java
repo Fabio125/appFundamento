@@ -11,25 +11,20 @@ import java.util.Arrays;
  *
  * @author Frequena Chuyes
  */
-public class UCurso {    
-
+public class UAlumno {
+    
     private Object[] arreglo;
     private Object[] propiedad;
-    private int npropiedad=6;
+    private int npropiedad=3;
     
-    public UCurso(){}
-      
     public boolean arregloCreado(){
     
         return arreglo!=null;
-    }    
-       
-    public void crearCurso(
-            String idcurso,
-            String nombre,
-            int ncredito,
-            int ciclo,
-            String prerequisito){       
+    } 
+    
+    public void crearAlumno(
+            String idAlumno,
+            String nombre){       
        
        int nelementos;  
        propiedad=new Object[npropiedad];
@@ -38,11 +33,8 @@ public class UCurso {
        {    
             arreglo=new Object[1];  
             propiedad[0]=1;
-            propiedad[1]=idcurso;
-            propiedad[2]=nombre;
-            propiedad[3]=ncredito;
-            propiedad[4]=ciclo;
-            propiedad[5]=prerequisito;            
+            propiedad[1]=idAlumno;
+            propiedad[2]=nombre;                       
             arreglo[0]=propiedad;            
             
        }else{
@@ -50,16 +42,18 @@ public class UCurso {
             nelementos=arreglo.length+1;
             arreglo= Arrays.copyOf(arreglo, nelementos);
             propiedad[0]=nelementos;
-            propiedad[1]=idcurso;
-            propiedad[2]=nombre;
-            propiedad[3]=ncredito;
-            propiedad[4]=ciclo;
-            propiedad[5]=prerequisito;          
+            propiedad[1]=idAlumno;
+            propiedad[2]=nombre;                                           
             arreglo[nelementos-1]=propiedad;    
        }
     }
     
-    public int posicionCodigo(String idcurso){
+    public Object[] reportarAlumno(){
+    
+        return arreglo;        
+    }
+    
+    public int posicionCodigo(String idalumno){
     
         int pos=-1;
         
@@ -67,7 +61,7 @@ public class UCurso {
         
             for(int i=0;i<arreglo.length;i++){
                 
-                if(String.valueOf(((Object[])arreglo[i])[1]).equalsIgnoreCase(idcurso)){
+                if(String.valueOf(((Object[])arreglo[i])[1]).equals(idalumno)){
                 
                     pos=i;
                     break;
@@ -77,33 +71,22 @@ public class UCurso {
         return pos;
     }
     
-    public Object[] reportarCurso(){
-    
-        return arreglo;        
-    }
-    
-    public void modificaCurso( 
+    public void modificaAlumno( 
             int index,
-            String idcurso,
-            String nombre,
-            int ncredito,
-            int ciclo,
-            String prerequisito){
+            String idalumno,
+            String nombre ){
     
         if(arregloCreado()){
             
             propiedad=new Object[npropiedad];
             propiedad[0]=index+1;
-            propiedad[1]=idcurso;
-            propiedad[2]=nombre;
-            propiedad[3]=ncredito;
-            propiedad[4]=ciclo;
-            propiedad[5]=prerequisito;
+            propiedad[1]=idalumno;
+            propiedad[2]=nombre;          
             arreglo[index]=propiedad;
         }
     }
     
-    public void elimnarCurso(int index){
+    public void elimnarAlumno(int index){
     
          Object[] arreglo_aux;
          int j=0;
@@ -126,7 +109,21 @@ public class UCurso {
          }
     }
     
-    public int[] posicionCadenaEnCurso(String cadena, int index){
+    public void darPosicion(){
+    
+         int k=1;
+         
+         if(arregloCreado()){
+          
+              for(int i=0; i<arreglo.length; i++) { 
+              
+                  ((Object[])arreglo[i])[0]=k;
+                  k++;
+              }         
+         }
+    }
+    
+    public int[] posicionCadenaEnNombre(String cadena, int index){
         
        int cont=0;
        int j=0;
@@ -157,14 +154,14 @@ public class UCurso {
        return pos;
     }
     
-    public Object[] reportarCursoxNombre(String nombre){
+    public Object[] reportarAlumnoxNombre(String nombre){
     
          Object[] arreglo_aux=null;
          int[] pos;
          
          if(arregloCreado()){
           
-             pos=posicionCadenaEnCurso(nombre,2);
+             pos=posicionCadenaEnNombre(nombre,2);
              
              if(pos!=null){
              
@@ -183,33 +180,7 @@ public class UCurso {
         return arreglo_aux;        
     }
     
-    public Object[] reportarCursoxCiclo(int nciclo){
-    
-         Object[] arreglo_aux=null;
-         int[] pos;
-         
-         if(arregloCreado()){
-          
-             pos=posicionCadenaEnCurso(String.valueOf(nciclo),4);
-             
-             if(pos!=null){
-             
-                 if(pos.length>0){
-                 
-                     arreglo_aux=new Object[pos.length];
-                     
-                     for(int i=0;i<pos.length;i++){
-                     
-                         arreglo_aux[i]=arreglo[pos[i]];
-                     }
-                 }
-             }
-             
-         }
-        return arreglo_aux;        
-    }
-    
-    public void ordenarCursoxNombre(){
+    public void ordenarAlumnoxNombre(){
     
          Object[] arreglo_aux;      
          
@@ -229,43 +200,6 @@ public class UCurso {
             }    
               darPosicion();
              
-         }
-    }
-    
-    
-    public void ordenarCursoxCiclo(){
-    
-         Object[] arreglo_aux;
-    
-          if(arregloCreado()){
-          
-              for(int i=1; i<=arreglo.length; i++) {  
-                  
-                for(int j=0; j<arreglo.length-i; j++) { 
-                    
-                    if(((int)((Object[])arreglo[j])[4])<=
-                             (int)((Object[])arreglo[j+1])[4]) { 
-                        arreglo_aux   = (Object[])arreglo[j]; 
-                        arreglo[j] =(Object[])arreglo[j+1]; 
-                        arreglo[j+1]= arreglo_aux; 
-                    }    
-                } 
-            }   
-           darPosicion();
-         }
-    }
-    
-    public void darPosicion(){
-    
-         int k=1;
-         
-         if(arregloCreado()){
-          
-              for(int i=0; i<arreglo.length; i++) { 
-              
-                  ((Object[])arreglo[i])[0]=k;
-                  k++;
-              }         
          }
     }
 }
