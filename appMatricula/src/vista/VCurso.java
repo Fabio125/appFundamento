@@ -8,6 +8,7 @@ package vista;
 import java.awt.HeadlessException;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
+import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
 import utilidad.UCurso;
 
@@ -168,11 +169,6 @@ public class VCurso extends javax.swing.JFrame {
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
-            }
-        });
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
             }
         });
 
@@ -398,6 +394,7 @@ public class VCurso extends javax.swing.JFrame {
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         // TODO add your handling code here:
         System.exit(0);
+        //
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
@@ -503,10 +500,6 @@ public class VCurso extends javax.swing.JFrame {
             }
     }//GEN-LAST:event_jTextField2KeyTyped
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
         // TODO add your handling code here:        
         try{
@@ -516,7 +509,8 @@ public class VCurso extends javax.swing.JFrame {
             jSpinner1.setValue(0);
             jSpinner2.setValue(0);
             jTextField3.setText(""); 
-            jLabel8.setText("NT=0");
+            jLabel8.setText("N°=0");
+            correcto=-1;
             index=-1;
             if(table!=null){
                 
@@ -825,16 +819,8 @@ public class VCurso extends javax.swing.JFrame {
             
             JOptionPane.showMessageDialog(null,ex.getMessage(), "Error", JOptionPane.INFORMATION_MESSAGE);  
         }
-    }
-    
-    public static boolean isNumeric(String strNum) {
-        try {
-            double d = Double.parseDouble(strNum);
-        } catch (NumberFormatException | NullPointerException nfe) {
-            return false;
-        }
-        return true;
-    }
+    }    
+  
     
     /***************************************************************/
     
