@@ -5,7 +5,9 @@
  */
 package appmatricula;
 
+import vista.VAlumno;
 import vista.VCurso;
+import vista.VMatricula;
 
 /**
  *
@@ -17,12 +19,29 @@ public class AppMatricula {
      * @param args the command line arguments
      */
     private static VCurso vcurso=null;
+   // private static VAlumno valumno=null;
+    private static VMatricula vmatricula=null;
+    
     public static void main(String[] args) {
         // TODO code application logic here
-        vcurso=new VCurso();
+        
+       vcurso=new VCurso();
         vcurso.setLocationRelativeTo(null); 
         vcurso.setResizable(false);
         vcurso.setVisible(true);
+       
+       
+        /*valumno=new VAlumno();
+        valumno.setLocationRelativeTo(null); 
+        valumno.setResizable(false);
+        valumno.setVisible(true);*/
+        
+    /*    vmatricula=new VMatricula();
+        vmatricula.setLocationRelativeTo(null); 
+        vmatricula.setResizable(false);
+        vmatricula.setVisible(true);
+    */   
+        
         //vcurso.show();
         
     }
