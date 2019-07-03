@@ -32,6 +32,7 @@ public class VAlumno extends javax.swing.JFrame {
     
     public VAlumno() {
         initComponents();
+       
     }
 
     /**

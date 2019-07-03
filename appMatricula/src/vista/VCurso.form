@@ -123,10 +123,17 @@
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" attributes="0">
                                               <Component id="jTextField1" min="-2" pref="81" max="-2" attributes="0"/>
+<<<<<<< Updated upstream
                                               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                                               <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Component id="jSpinner3" min="-2" pref="38" max="-2" attributes="0"/>
+=======
+                                              <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                                              <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="jSpinner3" min="-2" pref="39" max="-2" attributes="0"/>
+>>>>>>> Stashed changes
                                               <EmptySpace max="32767" attributes="0"/>
                                               <Component id="jCheckBox1" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
@@ -172,7 +179,11 @@
                           <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jCheckBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+<<<<<<< Updated upstream
                           <Component id="jSpinner3" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+=======
+                          <Component id="jSpinner3" alignment="0" min="-2" pref="23" max="-2" attributes="0"/>
+>>>>>>> Stashed changes
                           <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -217,6 +228,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField1">
               <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
                 <Property name="name" type="java.lang.String" value="txt_cod" noResource="true"/>
               </Properties>
               <Events>
@@ -231,6 +243,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField2">
               <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
                 <Property name="name" type="java.lang.String" value="txt_name" noResource="true"/>
               </Properties>
               <Events>
@@ -246,6 +259,7 @@
             </Component>
             <Component class="javax.swing.JSpinner" name="jSpinner1">
               <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
                 <Property name="name" type="java.lang.String" value="sp_ncredito" noResource="true"/>
               </Properties>
             </Component>
@@ -257,6 +271,7 @@
             </Component>
             <Component class="javax.swing.JSpinner" name="jSpinner2">
               <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
                 <Property name="name" type="java.lang.String" value="sp_nciclo" noResource="true"/>
               </Properties>
               <Events>
@@ -271,6 +286,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField3">
               <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
                 <Property name="name" type="java.lang.String" value="txt_cod" noResource="true"/>
               </Properties>
               <Events>
@@ -280,6 +296,7 @@
             <Component class="javax.swing.JButton" name="jButton1">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Guardar"/>
+                <Property name="enabled" type="boolean" value="false"/>
                 <Property name="name" type="java.lang.String" value="btn_guardar" noResource="true"/>
               </Properties>
               <Events>
@@ -289,6 +306,7 @@
             <Component class="javax.swing.JButton" name="jButton2">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cancelar"/>
+                <Property name="enabled" type="boolean" value="false"/>
                 <Property name="name" type="java.lang.String" value="btn_cancelar" noResource="true"/>
               </Properties>
               <Events>
@@ -298,6 +316,7 @@
             <Component class="javax.swing.JButton" name="jButton5">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Eliminar"/>
+                <Property name="enabled" type="boolean" value="false"/>
                 <Property name="name" type="java.lang.String" value="btn_eliminar" noResource="true"/>
               </Properties>
               <Events>
@@ -307,6 +326,7 @@
             <Component class="javax.swing.JCheckBox" name="jCheckBox1">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Buscar"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <AccessibilityProperties>
                 <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="ch_buscar"/>
@@ -314,10 +334,23 @@
               </AccessibilityProperties>
             </Component>
             <Component class="javax.swing.JSpinner" name="jSpinner3">
+<<<<<<< Updated upstream
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel9">
               <Properties>
                 <Property name="text" type="java.lang.String" value="N:"/>
+=======
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+              <Events>
+                <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jSpinner3StateChanged"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel9">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="NCursos :"/>
+>>>>>>> Stashed changes
               </Properties>
             </Component>
           </SubComponents>
@@ -327,6 +360,7 @@
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
 
           <Layout>

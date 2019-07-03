@@ -21,6 +21,7 @@ public class VCurso extends javax.swing.JFrame {
     /**
      * Creates new form VCurso
      */
+    private int opcion=0;
     private int correcto=1;
     private String idcurso=null;
     private String nombre=null;
@@ -33,9 +34,11 @@ public class VCurso extends javax.swing.JFrame {
     private int index=-1;
     
     public VCurso() {
-        initComponents();
+        
+        initComponents();        
     }
 
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -120,6 +123,7 @@ public class VCurso extends javax.swing.JFrame {
         jLabel2.setText("Cod :");
         jLabel2.setToolTipText("");
 
+        jTextField1.setEnabled(false);
         jTextField1.setName("txt_cod"); // NOI18N
         jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -130,6 +134,7 @@ public class VCurso extends javax.swing.JFrame {
         jLabel3.setText("Nombre :");
         jLabel3.setToolTipText("");
 
+        jTextField2.setEnabled(false);
         jTextField2.setName("txt_name"); // NOI18N
         jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -143,11 +148,13 @@ public class VCurso extends javax.swing.JFrame {
         jLabel4.setText("N° Credito:");
         jLabel4.setToolTipText("");
 
+        jSpinner1.setEnabled(false);
         jSpinner1.setName("sp_ncredito"); // NOI18N
 
         jLabel5.setText("Ciclo :");
         jLabel5.setToolTipText("");
 
+        jSpinner2.setEnabled(false);
         jSpinner2.setName("sp_nciclo"); // NOI18N
         jSpinner2.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -158,6 +165,7 @@ public class VCurso extends javax.swing.JFrame {
         jLabel6.setText("Pre-Requisito :");
         jLabel6.setToolTipText("");
 
+        jTextField3.setEnabled(false);
         jTextField3.setName("txt_cod"); // NOI18N
         jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -166,6 +174,7 @@ public class VCurso extends javax.swing.JFrame {
         });
 
         jButton1.setText("Guardar");
+        jButton1.setEnabled(false);
         jButton1.setName("btn_guardar"); // NOI18N
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -174,6 +183,7 @@ public class VCurso extends javax.swing.JFrame {
         });
 
         jButton2.setText("Cancelar");
+        jButton2.setEnabled(false);
         jButton2.setName("btn_cancelar"); // NOI18N
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -182,6 +192,7 @@ public class VCurso extends javax.swing.JFrame {
         });
 
         jButton5.setText("Eliminar");
+        jButton5.setEnabled(false);
         jButton5.setName("btn_eliminar"); // NOI18N
         jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -190,6 +201,16 @@ public class VCurso extends javax.swing.JFrame {
         });
 
         jCheckBox1.setText("Buscar");
+        jCheckBox1.setEnabled(false);
+
+        jSpinner3.setEnabled(false);
+        jSpinner3.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jSpinner3StateChanged(evt);
+            }
+        });
+
+        jLabel9.setText("NCursos :");
 
         jLabel9.setText("N:");
 
@@ -216,10 +237,17 @@ public class VCurso extends javax.swing.JFrame {
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+<<<<<<< Updated upstream
                                         .addGap(31, 31, 31)
                                         .addComponent(jLabel9)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+=======
+                                        .addGap(54, 54, 54)
+                                        .addComponent(jLabel9)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+>>>>>>> Stashed changes
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jCheckBox1)
                                         .addGap(13, 13, 13))
@@ -255,7 +283,11 @@ public class VCurso extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jCheckBox1)
+<<<<<<< Updated upstream
                     .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+=======
+                    .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+>>>>>>> Stashed changes
                     .addComponent(jLabel9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -283,6 +315,7 @@ public class VCurso extends javax.swing.JFrame {
         jPanel1.add(jPanel2);
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setEnabled(false);
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel7.setText("Lista de Cursos");
@@ -411,56 +444,73 @@ public class VCurso extends javax.swing.JFrame {
         ncredito=0;
         ciclo=0;
         prerequisito=null;
+        int nfilas=0;
         
         try{
         
-            if(jTextField1.getText().length()>0 &&
-                    jTextField2.getText().length()>0 && 
-                    jSpinner1.getValue()!=null &&
-                    jSpinner2.getValue()!=null){
+            if(jSpinner3.getValue()!=null){
                 
-                if(jTextField1.getText().length()==7){              
-                          
-                       if(jTextField3.getText().length()>0){
-                       
-                          if(jTextField3.getText().length()!=7){
-                              
-                              JOptionPane.showMessageDialog(null,"Pre-Requisito tiene que ser de 7 caracteres...", "Advertencia", JOptionPane.INFORMATION_MESSAGE);                 
-                              correcto=0;
-                          }                          
-                       }                       
-                       if((int)jSpinner1.getValue()<=0){
-                           
-                              JOptionPane.showMessageDialog(null,"N°de creditos debe ser mayor a cero...", "Advertencia", JOptionPane.INFORMATION_MESSAGE);                                         
-                              correcto=0;
-                       }                          
-                       if((int)jSpinner2.getValue()<=0){
-                           
-                              JOptionPane.showMessageDialog(null,"Ciclo debe ser mayor a cero...", "Advertencia", JOptionPane.INFORMATION_MESSAGE);                                         
-                              correcto=0;
-                       }  
-                       if(correcto==1){
- 
-                           if(ucurso.posicionCodigo(jTextField1.getText())==-1){
-                           
-                               guardarCurso();
-                               
-                           }else{
-                           
-                              actualizaCurso();
-                           }
-                       }                    
-                   
-                }else{
+                if((int)jSpinner3.getValue()>0){
                     
-                    JOptionPane.showMessageDialog(null,"Código de curso tiene que ser de 7 caracteres...", "Advertencia", JOptionPane.INFORMATION_MESSAGE);                 
-                }
-            
-            }else{
-            
-                JOptionPane.showMessageDialog(null,"Por favor complete la información solicitada...", "Advertencia", JOptionPane.INFORMATION_MESSAGE);                 
-            }            
-            
+                    nfilas=ucurso.reportarCurso()==null?0:(ucurso.reportarCurso()).length;
+                    
+                    System.out.println(nfilas);
+                    
+                    if(nfilas<(int)jSpinner3.getValue()){
+                       
+                         if(jTextField1.getText().length()>0 &&
+                                jTextField2.getText().length()>0 && 
+                                jSpinner1.getValue()!=null &&
+                                jSpinner2.getValue()!=null){
+
+                            if(jTextField1.getText().length()==7){              
+
+                                   if(jTextField3.getText().length()>0){
+
+                                      if(jTextField3.getText().length()!=7){
+
+                                          JOptionPane.showMessageDialog(null,"Pre-Requisito tiene que ser de 7 caracteres...", "Advertencia", JOptionPane.INFORMATION_MESSAGE);                 
+                                          correcto=0;
+                                      }                          
+                                   }                       
+                                   if((int)jSpinner1.getValue()<=0){
+
+                                          JOptionPane.showMessageDialog(null,"N°de creditos debe ser mayor a cero...", "Advertencia", JOptionPane.INFORMATION_MESSAGE);                                         
+                                          correcto=0;
+                                   }                          
+                                   if((int)jSpinner2.getValue()<=0){
+
+                                          JOptionPane.showMessageDialog(null,"Ciclo debe ser mayor a cero...", "Advertencia", JOptionPane.INFORMATION_MESSAGE);                                         
+                                          correcto=0;
+                                   }  
+                                   if(correcto==1){
+
+                                       if(ucurso.posicionCodigo(jTextField1.getText())==-1){
+
+                                           guardarCurso();
+
+                                       }else{
+
+                                          actualizaCurso();
+                                       }
+                                   }                    
+
+                            }else{
+
+                                JOptionPane.showMessageDialog(null,"Código de curso tiene que ser de 7 caracteres...", "Advertencia", JOptionPane.INFORMATION_MESSAGE);                 
+                            }
+
+                        }else{
+
+                            JOptionPane.showMessageDialog(null,"Por favor complete la información solicitada...", "Advertencia", JOptionPane.INFORMATION_MESSAGE);                 
+                        }                     
+                  }
+                    
+              }else{
+
+                    JOptionPane.showMessageDialog(null,"Debe ingresar N Cursos...", "Advertencia", JOptionPane.INFORMATION_MESSAGE);                 
+              }             
+           }
         }catch (Exception ex) {
             
             JOptionPane.showMessageDialog(null,ex.getMessage(), "Error", JOptionPane.INFORMATION_MESSAGE);            
@@ -546,22 +596,25 @@ public class VCurso extends javax.swing.JFrame {
                 // TODO add your handling code here:
         try{
         
-            if(jTable2!=null){
+            if(opcion==4){
                 
-                if(jTable2.getRowCount()>0){
-                    
-                    if(jTable2.rowAtPoint(evt.getPoint())!=-1){
-                        
-                        index=Integer.parseInt(jTable2.getValueAt(jTable2.rowAtPoint(evt.getPoint()), 0).toString())-1;
-                        jTextField1.setText(jTable2.getValueAt(jTable2.rowAtPoint(evt.getPoint()), 1).toString());
-                        jTextField2.setText(jTable2.getValueAt(jTable2.rowAtPoint(evt.getPoint()), 2).toString());
-                        jSpinner1.setValue(Integer.parseInt(jTable2.getValueAt(jTable2.rowAtPoint(evt.getPoint()), 3).toString()));
-                        jSpinner2.setValue(Integer.parseInt(jTable2.getValueAt(jTable2.rowAtPoint(evt.getPoint()), 4).toString()));
-                        jTextField3.setText(jTable2.getValueAt(jTable2.rowAtPoint(evt.getPoint()), 5).toString());
-                    }
-                    
-                }
-              
+                if(jTable2!=null){
+
+                        if(jTable2.getRowCount()>0){
+
+                            if(jTable2.rowAtPoint(evt.getPoint())!=-1){
+
+                                index=Integer.parseInt(jTable2.getValueAt(jTable2.rowAtPoint(evt.getPoint()), 0).toString())-1;
+                                jTextField1.setText(jTable2.getValueAt(jTable2.rowAtPoint(evt.getPoint()), 1).toString());
+                                jTextField2.setText(jTable2.getValueAt(jTable2.rowAtPoint(evt.getPoint()), 2).toString());
+                                jSpinner1.setValue(Integer.parseInt(jTable2.getValueAt(jTable2.rowAtPoint(evt.getPoint()), 3).toString()));
+                                jSpinner2.setValue(Integer.parseInt(jTable2.getValueAt(jTable2.rowAtPoint(evt.getPoint()), 4).toString()));
+                                jTextField3.setText(jTable2.getValueAt(jTable2.rowAtPoint(evt.getPoint()), 5).toString());
+                            }
+
+                        }
+
+                 }
             }
             
         }catch (Exception ex) {
@@ -648,9 +701,51 @@ public class VCurso extends javax.swing.JFrame {
         } 
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
+    private void jSpinner3StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner3StateChanged
+        // TODO add your handling code here:
+        
+        try{        
+          
+              if(jSpinner3.getValue()!=null){
+                
+                if((int)jSpinner3.getValue()>0){
+                    
+                    jTextField1.setEnabled(true);
+                    jTextField2.setEnabled(true);
+                    jTextField3.setEnabled(true);
+                    jButton1.setEnabled(true);
+                    jButton2.setEnabled(true);
+                    
+                    jButton3.setEnabled(false);                    
+                    jCheckBox1.setEnabled(false);
+                    
+                    jSpinner1.setEnabled(true);
+                    jSpinner2.setEnabled(true);
+                    jPanel3.setEnabled(true);
+                }
+             }
+            
+        }catch(Exception ex){
+        
+            JOptionPane.showMessageDialog(null,ex.getMessage(), "Error", JOptionPane.INFORMATION_MESSAGE);  
+        } 
+    }//GEN-LAST:event_jSpinner3StateChanged
+
     
     /**********************************Mis Metodos************************************/
     
+    public void activarOpciones(int op){
+        
+        jSpinner3.setValue(ucurso.reportarCurso()==null?0:(ucurso.reportarCurso().length));
+        
+        switch(op){
+        
+            case 1 :
+                   opcion=op;
+                   jSpinner3.setEnabled(true);
+                break;
+        }
+    }
     public void guardarCurso(){
     
         try{
